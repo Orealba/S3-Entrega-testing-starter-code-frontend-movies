@@ -37,7 +37,6 @@ function orderAlphabetically(array) {
   return orderMovies.slice(0, 20).map((movie) => movie.title);
 }
 
-
 function orderByYear(array) {
   return array.slice().sort((first, second) => {
     if (first.year < second.year) {
@@ -59,7 +58,17 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(array,category) {
+  let filteredMovies = array.filter((movie) => movie.genre.some((genre)=> genre ===  category));
+
+  let totalScore = filteredMovies.reduce((accumulator, movie) => {
+    return accumulator + (movie.score || 0);
+  }, 0);
+
+  let averageScore = totalScore / filteredMovies.length;
+
+  return isNaN(averageScore) ? 0 : averageScore;
+}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}

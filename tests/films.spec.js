@@ -298,8 +298,41 @@ describe('Function "orderByYear"', () => {
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  const movies = [
+    {
+      title: 'Paths of Glory',
+      year: 1957,
+      director: 'Stanley Kubrick',
+      duration: '1h 28min',
+      genre: ['Drama', 'War'],
+      score: 6
+    },
+    {
+      title: 'Django Unchained',
+      year: 2012,
+      director: 'Quentin Tarantino',
+      duration: '2h 45min',
+      genre: ['Drama', 'Western'],
+      score: 7.5
+    },
+    {
+      title: 'Pulp Fiction',
+      year: 1994,
+      director: 'Quentin Tarantino',
+      duration: '2h 34min',
+      genre: ['Crime', 'Drama'],
+      score: 7.5
+    }
+  ];
+
+  it('should return the average score of movies in a specific category', () => {
+    expect(moviesAverageByCategory(movies, 'Crime')).toBe(7.5);
+    expect(moviesAverageByCategory(movies, 'Drama')).toBe(7);
+  });
+
+  it('should return 0 if there are no movies in the specified category', () => {
+
+    expect(moviesAverageByCategory(movies, 'Comedy')).toBe(0);
   });
 });
 

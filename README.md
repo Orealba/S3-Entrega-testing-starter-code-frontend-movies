@@ -56,7 +56,8 @@ The statement of the exercise is available on the virtual campus.
 
 
 ```shell
-$ npm install
+$ 
+
 $ npm run test:watch
 ```
 

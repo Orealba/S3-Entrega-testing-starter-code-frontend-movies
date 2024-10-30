@@ -10,7 +10,7 @@ const {
   bestFilmOfYear,
 } = require('../src/films');
 
-// Exercise 1
+// Exercise 1npm run test:watch
 describe('Function "getAllDirectors"', () => {
   it('should be declared', () => {
     expect(typeof getAllDirectors).toBe('function');

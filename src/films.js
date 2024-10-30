@@ -58,8 +58,10 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory(array,category) {
-  let filteredMovies = array.filter((movie) => movie.genre.some((genre)=> genre ===  category));
+function moviesAverageByCategory(array, category) {
+  let filteredMovies = array.filter((movie) =>
+    movie.genre.some((genre) => genre === category)
+  );
 
   let totalScore = filteredMovies.reduce((accumulator, movie) => {
     return accumulator + (movie.score || 0);
@@ -71,10 +73,32 @@ function moviesAverageByCategory(array,category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {}
+function hoursToMinutes(array) {
+  let hours = array.map((movie) => {
+    let duration = movie.duration;
+    let hours = parseInt(duration.match(/(\d+)h/));
+    let minutes = parseInt(duration.match(/(\d+)min/));
+    if (Number.isNaN(minutes)) {
+      minutes = 0;
+    }
+    if (Number.isNaN(hours)) {
+      hours = 0;
+    }
+    let hoursToMinutes = hours * 60 + minutes;
+    return { ...movie, duration: hoursToMinutes };
+  });
+
+  return hours;
+}
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(array,year) {
+let moviesOfTheYear = array.filter((movie => movie.year == year))
+let movie = moviesOfTheYear.reduce( (best, movie)=>{
+  return best.score > movie.score ? best : movie
+})
+return [movie]
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
